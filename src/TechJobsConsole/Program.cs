@@ -63,7 +63,14 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-                        Console.WriteLine("Search all fields not yet implemented.");
+
+                        //  need to put  search all fields code here
+                        Console.WriteLine("Start of searching all columns for the search term");
+
+
+                        searchResults = JobData.FindByValue(searchTerm);
+                        PrintJobs(searchResults);
+                       
                     }
                     else
                     {
@@ -117,8 +124,41 @@ namespace TechJobsConsole
         }
 
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
+
         {
-            Console.WriteLine("printJobs is not implemented yet");
+            if (someJobs.Count == 0)
+            {
+                Console.WriteLine("There were no entries that matched your criteria");
+            }
+
+            else
+            {
+
+                for (int i = 0; i <= (someJobs.Count - 1); ++i)
+                {
+
+                    Console.WriteLine("*****");
+                    printDict(someJobs[i]);
+
+                }
+            }
+            
         }
+
+        public static void printDict<T, U>(Dictionary<T, U> dictToPrint)
+        {
+            
+            foreach (KeyValuePair<T, U> currentRecord in dictToPrint)
+            {
+                
+                Console.WriteLine("{0}:  {1}",Convert.ToString(currentRecord.Key), currentRecord.Value);
+                
+            }
+
+        }
+
+        
+
+
     }
 }
