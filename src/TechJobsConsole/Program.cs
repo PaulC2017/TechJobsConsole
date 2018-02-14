@@ -63,11 +63,6 @@ namespace TechJobsConsole
                     // Fetch results
                     if (columnChoice.Equals("all"))
                     {
-
-                        //  need to put  search all fields code here
-                        Console.WriteLine("Start of searching all columns for the search term");
-
-
                         searchResults = JobData.FindByValue(searchTerm);
                         PrintJobs(searchResults);
                        

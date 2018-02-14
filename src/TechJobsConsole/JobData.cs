@@ -47,9 +47,9 @@ namespace TechJobsConsole
 
             foreach (Dictionary<string, string> row in AllJobs)
             {
-                string aValue = row[column];
+                string aValue = row[column].ToLower();
 
-                if (aValue.Contains(value))
+                if (aValue.Contains(value.ToLower()))
                 {
                     jobs.Add(row);
                 }
@@ -148,32 +148,48 @@ namespace TechJobsConsole
             LoadData();
 
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
-            
+
+            string lcSearchTerm = searchTerm.ToLower();  // cast the search term to lower case to make the search case 
+                                                         //insensitive - july = July
+
             foreach (Dictionary<string, string> row in AllJobs)
             {
 
                 foreach (KeyValuePair<string, string> currentRecord in row)
                 {
 
-                    if (currentRecord.Value.Contains(searchTerm)) {
-                        
+                    string lcCurrentRecord = currentRecord.Value.ToLower();  // cast the value in the dictionary to lower case
+                                                                             //to make the search case insensitive - july = July
+
+                    if (lcCurrentRecord.Contains(lcSearchTerm) )
+                    {
+
                         jobs.Add(row);
                         break;
+
+
+                        //  the following code works for searchig but is case sensitive - ie July does not = july
+                        /*if (currentRecord.Value.Contains(searchTerm)) {
+
+                            jobs.Add(row);
+                            break;
+                        }*/
+
                     }
-
                 }
-                
             }
-
             return jobs;
         }
 
+           
+     }
+
         
-    }
+ }
 
 
 
-}
+
 
 
 
