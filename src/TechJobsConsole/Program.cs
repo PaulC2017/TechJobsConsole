@@ -147,6 +147,9 @@ namespace TechJobsConsole
             {
                 
                 Console.WriteLine("{0}:  {1}",Convert.ToString(currentRecord.Key), currentRecord.Value);
+
+                //
+
                 
             }
 
